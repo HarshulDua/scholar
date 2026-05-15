@@ -55,6 +55,9 @@ desktop.ini
 *.log
 logs/
 
+# ── Learning materials (local only) ──────────────────────────────────────────
+learn/
+
 # ── Claude Code (AI assistant tooling — not part of the project) ──────────────
 .claude/
 CLAUDE.md
