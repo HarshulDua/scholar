@@ -57,8 +57,6 @@ python scripts/build_index.py
 # Gradio UI is now available at http://localhost:7860
 ```
 
-See [learn/09_mvp_setup.md](learn/09_mvp_setup.md) for step-by-step setup including data download.
-
 ---
 
 ## Results
@@ -118,7 +116,7 @@ A simulated user always clicking the top result: without diversity reranking, to
 | **numpy matmul over FAISS HNSW** | FAISS HNSW segfaults (SIGSEGV) in asyncio on Windows Python 3.13 due to OMP thread conflicts. Numpy brute-force matmul gives exact cosine (Recall@k=1.0) at ~10ms for 200K×384 — competitive with HNSW at this scale. |
 | **Gradio over React** | Ships in days not weeks. The ML story is what matters for placements; React frontend is future work. |
 
-Full ADRs in [learn/01_design_doc.md](learn/01_design_doc.md) and [docs/decisions.md](docs/decisions.md).
+Full ADRs in [docs/decisions.md](docs/decisions.md).
 
 ---
 
@@ -163,7 +161,6 @@ docs/
 ├── benchmarks.md    # Eval results (updated after each run)
 ├── decisions.md     # Architecture Decision Records
 └── learning-log.md  # Developer notes
-learn/               # Interview prep, implementation guides, theory deep dives
 notebooks/           # EDA, ablation studies, training curves
 tests/               # 63 tests (pytest + mypy + ruff all pass)
 ```
