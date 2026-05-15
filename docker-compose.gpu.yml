@@ -1,0 +1,67 @@
+version: "3.9"
+
+# GPU-enabled compose override — use instead of docker-compose.yml for CUDA inference
+# Requirements: NVIDIA Container Toolkit installed on host
+# Usage: docker compose -f docker-compose.gpu.yml up
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: scholar
+      POSTGRES_USER: scholar
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U scholar -d scholar"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.cuda
+    command: uvicorn scholar.api.main:app --host 0.0.0.0 --port 8000
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      # Mount D drive data dir directly so large files don't live in container
+      - "D:/DRIVE D/scholar project/data:/app/data"
+    env_file:
+      - .env.cuda
+    working_dir: /app
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.cuda
+    command: python scholar/ui/gradio_app.py
+    depends_on:
+      - api
+    ports:
+      - "7860:7860"
+    volumes:
+      - .:/app
+      - "D:/DRIVE D/scholar project/data:/app/data"
+    env_file:
+      - .env.cuda
+    working_dir: /app
+
+volumes:
+  pgdata:

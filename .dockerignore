@@ -1,0 +1,62 @@
+# ── Secrets ───────────────────────────────────────────────────────────────────
+.env
+.env.cpu
+.env.cuda
+
+# ── Data & models (mount via volume instead) ──────────────────────────────────
+data/
+*.npy
+*.index
+*.pt
+*.bin
+*.safetensors
+*.pkl
+
+# ── Python artifacts ──────────────────────────────────────────────────────────
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# ── Testing & linting ─────────────────────────────────────────────────────────
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ── Jupyter checkpoints ───────────────────────────────────────────────────────
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# ── IDE & OS ──────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# ── Git ───────────────────────────────────────────────────────────────────────
+.git/
+.gitignore
+
+# ── Claude Code (not needed in container) ─────────────────────────────────────
+.claude/
+CLAUDE.md
+
+# ── Docs (not needed in container) ───────────────────────────────────────────
+learn/
+docs/
+notebooks/
+*.md
+README.md
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+logs/
+phase2.txt

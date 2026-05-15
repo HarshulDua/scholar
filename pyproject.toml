@@ -1,0 +1,76 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scholar"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "gradio",
+    "sqlmodel",
+    "asyncpg",
+    "pgvector",
+    "psycopg2-binary",
+    "sentence-transformers",
+    "faiss-cpu",
+    "torch",
+    "torchvision",
+    "torchaudio",
+    "lightgbm",
+    "scikit-learn",
+    "ranx",
+    "transformers",
+    "accelerate",
+    "bitsandbytes",
+    "peft",
+    "datasets",
+    "pandas",
+    "pyarrow",
+    "tqdm",
+    "rich",
+    "python-dotenv",
+    "pydantic-settings",
+    "trl",
+    "bert-score",
+    "ir-datasets",
+    "scipy",
+    "matplotlib",
+    "seaborn",
+    "notebook",
+    "ipykernel",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+    "httpx",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["scholar"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+ignore = [
+    "N806",  # uppercase variable names (ML convention: X, X_train, N, F1, etc.)
+    "N812",  # import torch.nn.functional as F (universal PyTorch convention)
+]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

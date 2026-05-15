@@ -1,0 +1,23 @@
+FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y \
+    python3.11 python3.11-dev python3-pip \
+    build-essential libpq-dev curl git \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1
+RUN update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
+
+WORKDIR /app
+
+COPY pyproject.toml .
+RUN pip install --no-cache-dir hatchling
+# Install PyTorch CUDA 12.1 wheel first
+RUN pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+RUN pip install --no-cache-dir -e ".[dev]"
+
+COPY . .
+
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1

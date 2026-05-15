@@ -1,0 +1,34 @@
+# Normalize line endings to LF in the repository
+# Git will convert to CRLF on Windows checkout automatically
+
+* text=auto
+
+# Python
+*.py text eol=lf
+
+# Shell scripts must be LF
+*.sh text eol=lf
+
+# Config files
+*.toml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sql text eol=lf
+*.json text eol=lf
+
+# Docs
+*.md text eol=lf
+
+# PowerShell (CRLF is native on Windows)
+*.ps1 text eol=crlf
+
+# Binary files — no line ending conversion
+*.npy binary
+*.pt binary
+*.bin binary
+*.safetensors binary
+*.pkl binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary

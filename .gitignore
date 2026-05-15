@@ -1,0 +1,66 @@
+# ── Secrets & local config ────────────────────────────────────────────────────
+.env
+.env.cpu
+.env.cuda
+
+# ── Data, models & indexes (large binary files) ───────────────────────────────
+data/
+*.npy
+*.index
+*.pt
+*.bin
+*.safetensors
+*.pkl
+*.json.gz
+hf_cache/
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+
+# ── Testing & linting ─────────────────────────────────────────────────────────
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Claude Code (AI assistant tooling — not part of the project) ──────────────
+.claude/
+CLAUDE.md
+
+# ── Miscellaneous project-local files ─────────────────────────────────────────
+phase2.txt
+MVP_SETUP.txt
+COMPLETE_CODEBASE_GUIDE.html
+COMPLETE_CODEBASE_GUIDE.md
