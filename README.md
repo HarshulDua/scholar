@@ -234,13 +234,3 @@ pytest && ruff check scholar/ && mypy scholar/
 ## License
 
 MIT. Paper data from ArXiv (CC0) and CiteULike (public). Model weights: Phi-3-mini from Microsoft (MIT license).
-
----
-
-## Learn More
-
-- [Design Document + ADRs](learn/01_design_doc.md) — full system design
-- [Implementation Guide](learn/02_implementation_guide.md) — file-by-file walkthrough
-- [Evaluation Metrics Deep Dive](learn/10_evaluation_metrics.md) — every metric explained with actual results
-- [Optimizations Log](learn/07_optimizations.md) — 24 bugs fixed with root causes and interview answers
-- [Reading Index](learn/00_INDEX.md) — structured reading order for all learning materials
